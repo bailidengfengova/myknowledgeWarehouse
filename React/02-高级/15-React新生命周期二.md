@@ -1,0 +1,29 @@
+1.getSnapshotBeforeUpdate
+    取代了componetWillUpdate，触发时间为update发生的时候，在render之后dom渲染之前返回一个值，作为componentDidUpdate的第三个参数
+2.componetWillUpdate的问题
+    更新前记录DOM状态，可能会做一些处理，与componentDidUpdate相隔时间过长，会导致记录的状态不太信
+3.willUpdate用处
+    新到的邮件会占据顶屏，上一次的页面不容易找
+        可以用willUpdate
+            可以通过容器高度来处理
+                在willUpdate中记录此时容器的高度
+                在didUpdate中访问容器的高度
+                    scrollTop = 此时的容器高度 - 记录的容器高度
+                        多了多少，滚动条滚动多少
+            但是如果在render或者didUpdate过程中又有其他异步会导致willUpdate中记录的内容不准确
+                此过程不可控
+4.getSnapshotBeforeUpdate
+    会出现在render之后didUpdate之前
+        避免了willUpdate的副作用，不安全，记录也不准
+    意为在更新前一刻记录下当前的状态，记录状态准确
+5.Fiber引入之后
+    willUpdate出现了重复执行的问题，且记录的位置不准
+6.gssbu也是要返回一个东西才不至于报错
+7.didUpdate一共有三个参数
+    老的属性，老的状态，gssbu传过来的value值（获取记录的状态值）
+8.扩展运算符
+    谁写在前边，先展示谁
+9.scrollHeight可以获得容器的滚动高度
+10.React尽量不要直接访问Dom节点
+    而是使用ref访问
+    
