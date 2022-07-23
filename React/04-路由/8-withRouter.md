@@ -14,6 +14,9 @@
 3.render写法也可以传参数
     回调函数里写一个形参即可
         通过{...props}即可传值 **** 传值方式可以借鉴
+    <Route path="/center" render={(props) => {
+        return <Center myname="hanfei" {...props} />
+    }} />
 4.如果父组件里的props没有history，父组件的父组件里也没有history
     可以用withRouter高阶组件
 5.withRouter的能力就是把组件包装一层，变成父组件，给子组件传数据
@@ -22,3 +25,4 @@
         可以跨级传输history这些值
             只要接收原始的组件，把组件能力增强，由路由提供，隔空提供history,match等属性
 6.withRouter是一个高阶组件
+7.可以亲切的称为干爹组件
