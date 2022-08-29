@@ -26,3 +26,8 @@
     combineReducers接收的是一个对象
 10.思考
     如果在不同的dispatch的时候对号入座不同的reducer呢
+        其实redux并不知道是给谁发的reducer，会把所有子reducer进行遍历
+        dispatch之后，所有的reducer都会被执行一遍，所有的订阅者都会被执行一遍
+11.如何提高效率
+    如果多个页面用同样的数据，只需要请求一次就行，请求到把数据缓存到redux store中，放到了内存中
+        如果想永久缓存，可以用localStorage

@@ -1,4 +1,4 @@
-1.原理其实就是发布订阅模式
+1.Redux原理其实就是订阅发布模式
 2.按照redux
     npm i redux
 3.store处理不了状态的，需要交给reducer进行处理
